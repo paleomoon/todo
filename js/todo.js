@@ -705,7 +705,7 @@ function editTask () {
 }
 
 function init () {
-    localStorage.clear();
+    //localStorage.clear();
     initData();
     initCateHtml();
     refreshTaskListHtml(getAllTask());
