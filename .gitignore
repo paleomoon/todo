@@ -1,0 +1,6 @@
+#ignore these files 
+*.png
+*.jpg
+*.JPG
+*.gif
+todo1.js

@@ -1,0 +1,284 @@
+body, ul, li, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+select, input, textarea {
+    border: none;
+    outline: none;
+}
+li {
+    list-style: none;
+}
+.fa {
+    margin-right: 4px;
+}
+input[type=button] {
+    cursor: pointer;
+}
+input[type=button]:hover {
+    background-color: #A8AAC5;
+    color: #fff;
+}
+header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 2px 4px 1px #888;
+    line-height: 60px;
+    text-indent: 16px;
+    background-color: #5D6684;
+    color: #fff;
+    font-size: 32px;
+    z-index: 10;
+}
+.main {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 100%;
+    min-width: 500px;
+    overflow: hidden;
+    z-index: 9;
+}
+.task-category {
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    background-color: #DADADA;
+    z-index: 8;
+}
+.task-category .all-task-title + div,
+.task-category h3,
+.task-category h4 {
+    padding-left: 16px;
+    line-height: 32px;
+}
+.task-category h2 {
+    height: 44px;
+    padding-left: 16px;
+    line-height: 44px;
+    font-size: 18px;
+}
+.task-category h3 {
+    font-size: 16px;
+}
+.task-category h3:hover, 
+.task-category h4:hover {
+    background-color: #eee;
+}
+.task-category h3:hover .delete-category {
+    display: inline-block;
+}
+.task-category h4:hover .delete-category {
+    display: inline-block;
+}
+.task-category h4 {
+    padding-left: 32px;
+    font-size: 14px;
+}
+.cate-active {
+    background-color: #eee;
+}
+.task-category h2,
+.task-category h3,
+.task-category h4{
+    cursor: pointer;
+}
+.delete-category {
+    display: none;
+    float: right;
+    padding-right: 8px;
+}
+.add {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+.add-category {
+    background-color: #CACACA;
+    cursor: pointer;
+}
+.shadow-right {
+    box-shadow: 1px 0 1px 1px #888;
+}
+/*浮出层*/
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+.mask .modal {
+    position: absolute;
+    /*display: none;*/
+    width: 320px;
+    height: 180px;
+    left: 50%;
+    top: 50%;
+    margin: -90px 0 0 -160px;
+    padding: 10px;
+    box-shadow: 0 0 30px 4px #222;
+    background-color: #eee;
+    z-index: 9999;
+}
+.mask .modal-head {
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+}
+.mask .modal-body {
+    padding: 10px 0;
+    border-top: 1px dashed #888;
+    text-align: center;
+}
+.mask .modal-body label {
+    display: block;
+    height: 30px;
+}
+.mask .modal-body select {
+    width: 160px;
+    height: 26px;
+    box-sizing: border-box;
+}
+.mask .modal-body input[type=text] {
+    width: 160px;
+    height: 26px;
+    box-sizing: border-box;
+}
+.mask .modal-foot {
+    padding: 10px 20px;
+    text-align: right;
+}
+.mask .modal-foot input[type=button] {
+    margin-right: 10px;
+    padding: 6px 14px;
+    border: none;
+}
+.task-list {
+    position: absolute;
+    left: 240px;
+    width: 260px;
+    height: 100%;
+    background-color: #EEEEF0;
+    z-index: 7;
+}
+.task-list > ul {
+    background-color: #D8D8D8;
+}
+.task-status {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+.task-status input {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #D8D8D8;
+    cursor: pointer;
+}
+
+.task-status .btn-clicked {
+    background-color: #A8AAC5;
+    color: #fff;
+}
+.task-list .date,
+.task-list .task-done,
+.task-list .task-undone {
+    line-height: 32px;
+}
+.task-list .date {
+    padding-left: 16px;
+    background-color: #CACACA;
+}
+.task-list .task-done {
+    padding-left: 24px;
+    cursor: pointer;
+}
+.task-list .task-undone {
+    padding-left: 42px;
+    cursor: pointer;
+}
+
+.task-active {
+    background-color: #ffe;
+}
+.add-task {
+    background-color: #D8D8D8;
+    cursor: pointer;
+}
+
+.task-detail {
+    position: absolute;
+    height: 100%;
+    left: 500px;
+    right: 0;
+    font-family: 'Microsoft YaHei', 'SimHei', 'STHeiti', sans-serif;
+}
+.task-detail .task-title {
+    height: 44px;
+    padding-left: 16px;
+    line-height: 44px;
+    background-color: #D8D8D8;
+}
+.task-detail .task-title input[type=text]{
+    width: 200px;
+    height: 26px;
+    padding-left: 10px;
+}
+.task-detail .task-title .edit-btn,
+.task-detail .task-title .check-btn {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.task-detail .task-date {
+    height: 44px;
+    padding-left: 16px;
+    line-height: 44px;
+    background-color: #eee;
+}
+.task-detail .task-date input[type=date] {
+    height: 26px;
+    padding-left: 10px;
+}
+.task-detail .task-content {
+    position: absolute;
+    top: 88px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 16px 16px;
+    background-color: #fff;
+}
+.task-detail textarea {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+}
+.task-detail input[type=button] {
+    float: right;
+    padding: 6px 14px;
+    margin-right: 10px;
+}
+.task-detail .content-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}

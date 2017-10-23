@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO</title>
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+    <header>ToDo</header>
+    <div class="main">
+        <div class="task-category shadow-right">
+            <h2 class="all-task-title click-task-item" onclick="clickCate(this)">所有任务(<span>2</span>)</h2>
+            <div>分类列表</div>
+            <ul id="main-category-list">
+                <li>
+                    <h3 id="default-category" class="click-task-item" data-cate-id="0" onclick="clickCate(this)"><i class="fa fa-folder-open"></i>默认分类(<span>1</span>)<div class="delete-category"><i class="fa fa-trash" onclick="deleteItem(this, event)"></i></div></h3>
+                    <ul>
+                        <li><h4 class="click-task-item" data-child-cate-id="0" onclick="clickCate(this)"><i class="fa fa-file-o"></i>默认子分类(<span>2</span>)<div class="delete-category"><i class="fa fa-trash" onclick="deleteItem(this, event)"></i></div></h4></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="add add-category" id="add-category">
+                <div><i class="fa fa-plus"></i>新增分类</div>
+            </div>
+        </div>
+        <div class="task-list shadow-right">
+            <div class="task-status">
+                <input id="all-task-btn" type="button" value="所有" />
+                <input id="undone-task-btn" type="button" value="未完成" />
+                <input id="done-task-btn" type="button" value="已完成" />
+            </div>
+            <ul id="task-list">
+                <li>
+                    <div class="date">2017-9-16</div>
+                    <ul>
+                        <li class="task-done task" data-task-id="0" onclick="clickTask(this)"><i class="fa fa-check"></i>使用说明</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="date">2017-9-17</div>
+                    <ul>
+                        <li class="task-undone task" data-task-id="1" onclick="clickTask(this)">123</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="add add-task"><i class="fa fa-plus"></i>新增任务</div>
+        </div>
+        <div class="task-detail">
+            <div class="task-title">todo-6<div class="edit-btn"><i class="fa fa-edit"></i></div><div class="check-btn"><i class="fa fa-check-square-o"></i></div></div>
+            <div class="task-date">任务日期：2017-09-17</div>
+            <div class="task-content">内容</div>
+        </div>
+    </div>
+    <div class="mask" id="mask">
+        <div class="modal">
+            <div class="modal-head">新增分类</div>
+            <div class="modal-body">
+                <label for="new-category-select">
+                    选择主分类：
+                    <select id="new-category-select">
+                        <option>新增主分类</option>
+                    </select>
+                </label>
+                <label for="new-category-name">
+                    新分类名称：
+                    <input type="text" id="new-category-name">
+                </label>
+
+            </div>
+            <div class="modal-foot">
+                <input id="modal-cancel" type="button" value="取消">
+                <input id="modal-confirm" type="button" value="确认">
+            </div>
+        </div>
+    </div>
+    <script src="js/util.js"></script>
+    <script src="js/todo.js"></script>
+</body>
+</html>
