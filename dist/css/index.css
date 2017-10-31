@@ -1,0 +1,353 @@
+.fa {
+  margin-right: 4px;
+}
+
+html {
+  font-size: 62.5%;
+  /* 1rem=10px */
+}
+
+.shadow-right {
+  box-shadow: 1px 0 1px 1px #888;
+}
+
+input[type=button] {
+  cursor: pointer;
+}
+input[type=button]:hover {
+  background-color: #A8AAC5;
+  color: #fff;
+}
+
+.add, .task-category .add-category, .task-list .add-task {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+.add:hover, .task-category .add-category:hover, .task-list .add-task:hover {
+  background-color: #C1C3DE;
+  color: #343521;
+}
+
+body, ul, li, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Microsoft YaHei", "SimHei", "STHeiti", sans-serif;
+}
+
+select, input, textarea {
+  border: none;
+  outline: none;
+  font-family: "Microsoft YaHei", "SimHei", "STHeiti", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  -webkit-box-shadow: 0 2px 4px 1px #888;
+  -moz-box-shadow: 0 2px 4px 1px #888;
+  -o-box-shadow: 0 2px 4px 1px #888;
+  box-shadow: 0 2px 4px 1px #888;
+  line-height: 60px;
+  text-indent: 16px;
+  background-color: #5D6684;
+  color: #fff;
+  z-index: 10;
+}
+header div {
+  display: none;
+}
+header h1 {
+  color: #fff;
+  line-height: 60px;
+  margin-left: 15px;
+  font-size: 2.8rem;
+}
+
+.main {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  width: 100%;
+  min-width: 500px;
+  overflow: hidden;
+  z-index: 9;
+}
+
+.task-category {
+  position: absolute;
+  width: 240px;
+  height: 100%;
+  background-color: #DADADA;
+  z-index: 8;
+}
+.task-category h2 {
+  height: 44px;
+  padding-left: 16px;
+  line-height: 44px;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.task-category h3 {
+  height: 32px;
+  padding-left: 16px;
+  line-height: 32px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.task-category h4 {
+  height: 28px;
+  padding-left: 32px;
+  line-height: 28px;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.task-category h3:hover, .task-category h4:hover {
+  background-color: #eee;
+}
+.task-category h3:hover .delete-category, .task-category h4:hover .delete-category {
+  display: inline-block;
+}
+.task-category .all-task-title + div {
+  height: 38px;
+  padding-left: 16px;
+  line-height: 38px;
+  font-size: 1.6rem;
+}
+.task-category .cate-active {
+  background-color: #eee;
+}
+.task-category .delete-category {
+  display: none;
+  float: right;
+  padding-right: 8px;
+}
+.task-category .add-category {
+  background-color: #CACACA;
+}
+
+.task-list {
+  position: absolute;
+  left: 240px;
+  width: 260px;
+  height: 100%;
+  background-color: #EEEEF0;
+  z-index: 7;
+}
+.task-list > ul {
+  background-color: #D8D8D8;
+}
+.task-list .task-done, .task-list .task-undone {
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.task-list .task-done:hover, .task-list .task-undone:hover {
+  background-color: #ffe;
+}
+.task-list .task-done:hover .delete-task, .task-list .task-undone:hover .delete-task {
+  display: inline-block;
+}
+.task-list .task-done .delete-task, .task-list .task-undone .delete-task {
+  display: none;
+  float: right;
+  padding-right: 8px;
+}
+.task-list .task-done {
+  padding-left: 24px;
+}
+.task-list .task-undone {
+  padding-left: 42px;
+}
+.task-list .task-active {
+  background-color: #ffe;
+}
+.task-list .date {
+  height: 32px;
+  padding-left: 16px;
+  line-height: 32px;
+  background-color: #CACACA;
+}
+.task-list .task-status {
+  height: 44px;
+  line-height: 48px;
+  text-align: center;
+}
+.task-list .task-status input {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #D8D8D8;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+.task-list .task-status .btn-clicked {
+  background-color: #A8AAC5;
+  color: #fff;
+}
+.task-list .add-task {
+  background-color: #D8D8D8;
+}
+
+.task-detail {
+  position: absolute;
+  height: 100%;
+  left: 500px;
+  right: 0;
+  font-size: 1.6rem;
+}
+.task-detail .task-title {
+  height: 44px;
+  padding-left: 16px;
+  line-height: 44px;
+  background-color: #D8D8D8;
+}
+.task-detail .task-title input[type=text] {
+  width: 200px;
+  height: 26px;
+  padding-left: 10px;
+  border: 1px solid #AEAEAE;
+}
+.task-detail .task-title input[type=text]:focus {
+  border: 1px solid #404040;
+}
+.task-detail .task-title .edit-btn, .task-detail .task-title .check-btn {
+  display: inline-block;
+  float: right;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.task-detail .task-date {
+  height: 44px;
+  padding-left: 16px;
+  line-height: 44px;
+  background-color: #eee;
+}
+.task-detail .task-date input[type=date] {
+  height: 26px;
+  padding-left: 10px;
+  border: 1px solid #AEAEAE;
+}
+.task-detail .task-date input[type=date]:focus {
+  border: 1px solid #404040;
+}
+.task-detail .task-content {
+  position: absolute;
+  top: 88px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px 16px;
+  background-color: #fff;
+}
+.task-detail textarea {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+}
+.task-detail input[type=button] {
+  float: right;
+  padding: 6px 14px;
+  margin-right: 10px;
+}
+.task-detail .content-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+.mask .modal {
+  position: absolute;
+  /*display: none;*/
+  width: 320px;
+  height: 180px;
+  left: 50%;
+  top: 50%;
+  margin: -90px 0 0 -160px;
+  padding: 10px;
+  box-shadow: 0 0 30px 4px #222;
+  background-color: #eee;
+  z-index: 9999;
+}
+.mask .modal .modal-head {
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 2.2rem;
+}
+.mask .modal .modal-body {
+  padding: 10px 0;
+  border-top: 1px dashed #888;
+  text-align: center;
+}
+.mask .modal .modal-body label {
+  display: block;
+  height: 30px;
+}
+.mask .modal .modal-body select {
+  width: 160px;
+  height: 26px;
+  box-sizing: border-box;
+}
+.mask .modal .modal-body input[type=text] {
+  width: 160px;
+  height: 26px;
+  box-sizing: border-box;
+}
+.mask .modal .modal-foot {
+  padding: 10px 20px;
+  text-align: right;
+}
+.mask .modal .modal-foot input[type=button] {
+  margin-right: 10px;
+  padding: 6px 14px;
+  border: none;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+
+/*# sourceMappingURL=index.css.map */

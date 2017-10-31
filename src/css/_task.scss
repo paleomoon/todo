@@ -1,0 +1,81 @@
+.task-list {
+    position: absolute;
+    left: $left-width;
+    width: $mid-width;
+    height: 100%;
+    background-color: #EEEEF0;
+    z-index: 7;
+
+	> ul {
+		background-color: #D8D8D8;
+	}
+
+	.task-done, .task-undone {
+		height: 30px;
+		line-height: 30px;
+		cursor: pointer;
+		&:hover {
+			background-color: $task-active-color;
+			.delete-task {
+				display: inline-block;
+			}
+		}
+		.delete-task {
+		    display: none;
+		    float: right;
+		    padding-right: 8px;
+		}
+	}
+
+	.task-done {
+		padding-left: 24px;
+	}
+
+	.task-undone {
+		padding-left: 42px;
+	}
+
+	.task-active {
+		background-color: $task-active-color;
+	}
+
+	.date {
+		height: 32px;
+		padding-left: 16px;
+		line-height: 32px;
+		background-color: #CACACA;
+	}
+
+	.task-status {
+		height: 44px;
+		line-height: 48px;
+		text-align: center;
+
+		input {
+			display: inline-block;
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background-color: #D8D8D8;
+			font-size: 1.4rem;
+			cursor: pointer;
+			transition: 0.2s ease;
+			-webkit-transition: 0.2s ease;
+			-moz-transition: 0.2s ease;
+			-o-transition: 0.2s ease;
+		}
+
+		.btn-clicked {
+			@include btn-hover;
+		}
+	}
+
+	.add-task {
+		background-color: #D8D8D8;
+		@extend .add;
+	}
+}
+
+
+

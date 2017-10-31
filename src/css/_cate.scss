@@ -1,0 +1,51 @@
+.task-category {
+    position: absolute;
+    width: $left-width;
+    height: 100%;
+    background-color: #DADADA;
+    z-index: 8;
+
+	h2 {
+		@include cate-style(44px, 16px, 44px, 1.8rem);
+	}
+
+	h3 {
+		@include cate-style(32px, 16px, 32px, 1.6rem);
+	}
+
+	h4 {
+		@include cate-style(28px, 32px, 28px, 1.4rem);
+	}
+
+	h3, h4 {
+		&:hover {
+			background-color: $cate-active-color;
+			.delete-category {
+				display: inline-block;
+			}
+		}
+	}
+
+	.all-task-title + div {
+		height: 38px;
+		padding-left: 16px;
+		line-height: 38px;
+		font-size: 1.6rem;
+	}
+
+	.cate-active {
+		background-color: $cate-active-color;
+	}
+
+	.delete-category {
+		display: none;
+		float: right;
+		padding-right: 8px;
+	}
+
+	.add-category {
+		background-color: #CACACA;
+		@extend .add;
+	}
+}
+

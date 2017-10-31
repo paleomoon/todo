@@ -1,0 +1,9 @@
+.main {
+    position: absolute;
+    top: $head-height;
+    bottom: 0;
+    width: 100%;
+    min-width: 500px;
+    overflow: hidden;
+    z-index: 9;
+}

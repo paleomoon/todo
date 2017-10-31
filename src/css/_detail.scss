@@ -1,0 +1,79 @@
+.task-detail {
+    position: absolute;
+    height: 100%;
+    left: $left-width + $mid-width;
+    right: 0;
+    font-size: 1.6rem;
+
+	.task-title {
+		height: 44px;
+		padding-left: 16px;
+		line-height: 44px;
+		background-color: #D8D8D8;
+
+		input[type=text]{
+			width: 200px;
+			height: 26px;
+			padding-left: 10px;
+			border: 1px solid #AEAEAE;
+			&:focus {
+				border: 1px solid #404040;
+			}
+		}
+
+		.edit-btn, .check-btn {
+			display: inline-block;
+			float: right;
+			margin-right: 20px;
+			cursor: pointer;
+		}
+	}
+
+	.task-date {
+		height: 44px;
+		padding-left: 16px;
+		line-height: 44px;
+		background-color: #eee;
+		input[type=date] {
+			height: 26px;
+			padding-left: 10px;
+			border: 1px solid #AEAEAE;
+			&:focus {
+				border: 1px solid #404040;
+			}
+		}
+	}
+
+	.task-content {
+		position: absolute;
+		top: 88px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 10px 16px 16px;
+		background-color: #fff;
+	}
+
+	textarea {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		font-size: 1.4rem;
+		line-height: 1.6;
+		resize: none;
+		outline: none;
+	}
+
+	input[type=button] {
+		float: right;
+		padding: 6px 14px;
+		margin-right: 10px;
+	}
+
+	.content-btn {
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+	}
+}

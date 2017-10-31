@@ -1,0 +1,14 @@
+@mixin btn-hover {
+	background-color: #A8AAC5;
+    color: #fff;
+}
+
+//cate element style
+@mixin cate-style ($height, $pad-left, $line-height, $font-size) {
+	height: $height;
+	padding-left: $pad-left;
+	line-height: $line-height;
+	font-size: $font-size;
+	cursor: pointer;
+}
+
