@@ -215,7 +215,7 @@ function deleteChildCate (id) {
  * @param {number} id 主分类id
  * @return {Array} 主分类对象数组
  */
-function deleteCate (id) {
+function deleteCateItem (id) {
     var cateArr = getCate();
     for (var i = 0; i < cateArr.length; i++) {
         if (cateArr[i].id == id) {
@@ -365,7 +365,7 @@ function updateCateList () {
         html += '<li>' +
                 '<h3 class="click-task-item" data-cate-id=' + cate[i].id + ' onclick="clickCate(this)"><i class="fa fa-folder-open"></i>' + cate[i].name + ' (<span>' + getCateTaskNum(cate[i]) + '</span>)';
         if (i !== 0) { //默认主分类
-            html += '<div class="delete-category"><i class="fa fa-trash" onclick="deleteItem(this, event)"></i></div>';
+            html += '<div class="delete-category"><i class="fa fa-trash" onclick="deleteCateItem(this, event)"></i></div>';
         }
         html += '</h3>' +
             '<ul>';
@@ -373,7 +373,7 @@ function updateCateList () {
             var child = getChildCateById(cate[i].child[j]);
             html += '<li><h4 class="click-task-item" data-child-cate-id=' + child.id + ' onclick="clickCate(this)"><i class="fa fa-file-o"></i>' + child.name + ' (<span>' + getChildCateTaskNum(child) + '</span>)';
             if (i !== 0 || j !== 0) { //默认子分类
-                html += '<div class="delete-category"><i class="fa fa-trash" onclick="deleteItem(this, event)"></i></div>';
+                html += '<div class="delete-category"><i class="fa fa-trash" onclick="deleteCateItem(this, event)"></i></div>';
             }
             html += '</h4></li>'
         }
@@ -427,7 +427,7 @@ function bindAddCateEvent () {
 
             $('#main-category-list').innerHTML += '<li>' +
                 '<h3 class="click-task-item main-category" data-cate-id=' + newCate.id + ' onclick="clickCate(this)"><i class="fa fa-folder-open"></i>' + newCate.name +
-                ' (<span>0</span>)<div class="delete-category"><i class="fa fa-trash" onclick="deleteItem(this, event)"></i></div></h3>' +
+                ' (<span>0</span>)<div class="delete-category"><i class="fa fa-trash" onclick="deleteCateItem(this, event)"></i></div></h3>' +
                 '</li>';
 
             clickCate($('[data-cate-id=' + newCate.id + ']')); //跳转到新建分类
@@ -473,13 +473,13 @@ function bindAddCateEvent () {
  * @param {object} element 点击的元素
  * @param {object} event 事件对象
  */
-function deleteItem(element, event) {
+function deleteCateItem(element, event) {
     var e = getEvent(event);
     stopPropagation(event); //阻止事件冒泡，否则无法准确找到分类元素
     var cateElement = element.parentNode.parentNode; //找到分类元素
     var id;
     if ((id = cateElement.getAttribute('data-cate-id')) != null) { //主分类
-        deleteCate(id);
+        deleteCateItem(id);
     }
     else if ((id = cateElement.getAttribute('data-child-cate-id')) != null) { //子分类
         deleteChildCate(id);
@@ -545,10 +545,10 @@ function updateTaskList(task) {
                     '<ul>';
         for (var j = 0; j < dateTaskGroupArr[i].task.length; j++) {
             if (dateTaskGroupArr[i].task[j].finish) {
-                html += '<li class="task-done task" data-task-id="' + dateTaskGroupArr[i].task[j].id +'" onclick="clickTask(this)"><i class="fa fa-check"></i>' + dateTaskGroupArr[i].task[j].title + '</li>';
+                html += '<li class="task-done task" data-task-id="' + dateTaskGroupArr[i].task[j].id +'" onclick="clickTask(this)"><i class="fa fa-check"></i>' + dateTaskGroupArr[i].task[j].title + '<div class="delete-task"><i class="fa fa-trash" onclick="deleteTaskItem(this, event)"></i></div></li>';
             }
             else {
-                html += '<li class="task-undone task" data-task-id="' + dateTaskGroupArr[i].task[j].id +'" onclick="clickTask(this)">' + dateTaskGroupArr[i].task[j].title + '</li>';
+                html += '<li class="task-undone task" data-task-id="' + dateTaskGroupArr[i].task[j].id +'" onclick="clickTask(this)">' + dateTaskGroupArr[i].task[j].title + '<div class="delete-task"><i class="fa fa-trash" onclick="deleteTaskItem(this, event)"></i></div></li>';
             }
         }
         html += '</ul>' +
@@ -631,6 +631,27 @@ function clickTask (element) {
 }
 
 /**
+ * 删除任务
+ * @param {object} element 点击的元素
+ * @param {object} event 事件对象
+ */
+function deleteTaskItem(element, event) {
+    if (confirm("确定删除任务？")) {
+        var e = getEvent(event);
+        stopPropagation(event); //阻止事件冒泡，否则无法准确找到任务元素
+        var taskElement = element.parentNode.parentNode; //找到分类元素
+        var id = taskElement.getAttribute('data-task-id');
+        var task = getTaskById(id);
+        deleteTaskById(id);
+        updateChildCateChild("delete", task.pid, id);
+        updateCateList();
+        updateTaskList(getAllTask());
+        clickCate($('.all-task-title')); //默认显示所有分类
+        //updateTaskDetail();
+    }
+}
+
+/**
  * 设置编辑状态
  * @param {number} state 编辑状态 0-新建任务的编辑状态 1-修改任务的编辑状态
  * @param {string} title [可选] 任务标题
@@ -702,7 +723,7 @@ function bindEditEvent (state) {
             else {
                 newTask.pid = 0;
             }
-            updateChildCateChild(newTask.pid, newTask.id); //更新子分类child
+            updateChildCateChild("add", newTask.pid, newTask.id); //更新子分类child
             addTask(newTask);
             updateTaskList(getTaskByActivedCate());
             updateCateList();
@@ -745,14 +766,18 @@ function bindAddTaskEvent () {
 
 /**
  * 更新子分类child
+ * @param {string} updateMode 更新模式 add-添加 delete-删除
  * @param {number} childCateId 子分类id
  * @param {number} taskId 任务id
  */
-function updateChildCateChild(childCateId, taskId) {
+function updateChildCateChild(updateMode, childCateId, taskId) {
     var childCateArr = getChildCate();
     for (var i = 0; i < childCateArr.length; i++) {
         if (childCateArr[i].id == childCateId) {
-            childCateArr[i].child.push(taskId);
+            if (updateMode == "add")
+                childCateArr[i].child.push(taskId); //添加
+            else if (updateMode == "delete")
+                removeByValue(childCateArr[i].child, taskId); //删除
             break;
         }
     }
