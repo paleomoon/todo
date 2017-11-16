@@ -192,7 +192,7 @@ header h1 {
     padding-left: 24px;
 }
 .task-list .task-undone {
-    padding-left: 42px;
+    padding-left: 40px;
 }
 .task-list .task-done:hover,
 .task-list .task-undone:hover {
